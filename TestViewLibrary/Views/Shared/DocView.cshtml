@@ -1,0 +1,15 @@
+﻿@model TW.PDF.DocSection
+<div>
+
+    @foreach (var s1 in Model.SubSections)
+    { 
+        <h2>@s1.SectionNumber. @s1.Title</h2>
+        <div>@s1.Content</div>
+        foreach (var s2 in s1.SubSections)
+        { 
+        <h3>@s2.SectionNumber. @s2.Title</h3>
+        <div>@s2.Content</div>
+        }
+    }
+
+</div>
