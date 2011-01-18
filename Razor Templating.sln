@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine.Core", "RazorEngine.Core\RazorEngine.Core.csproj", "{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{0459640F-98D7-4D50-A3FF-ED4C68840137}"
+	ProjectSection(SolutionItems) = preProject
+		Libraries\System.Web.Razor.dll = Libraries\System.Web.Razor.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine.Templates", "RazorEngine.Templates\RazorEngine.Templates.csproj", "{627E40EE-0A5E-4787-B92F-57B74A683E2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{8398A9F0-3CA1-4598-8122-1457F30F7CA0}"
+	ProjectSection(SolutionItems) = preProject
+		Credits.txt = Credits.txt
+		License.txt = License.txt
+		RazorEngine.snk = RazorEngine.snk
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{DBC8E330-7D6E-4840-8C92-C6BBDF037AC3}"
+	ProjectSection(SolutionItems) = preProject
+		razorengine.nuspec = razorengine.nuspec
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5BCCBCC3-F383-448E-860F-DCA11AFFC74F}.Release|x86.ActiveCfg = Release|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{627E40EE-0A5E-4787-B92F-57B74A683E2D}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

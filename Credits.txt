@@ -1,0 +1,15 @@
+Credits
+-------
+
+The Razor Template Engine project was originally created by Ben @ BuildStarted.com.  
+Credit goes to him and Andrew Nurse for their original code examples from which this
+project is made possible.
+
+This code was subsequently picked up and dually developed by both Ben (BuildStarted)
+and Matt (Fidelity Design). Enjoy.
+
+BuildStarted: http://www.buildstarted.com
+Fidelity Design: http://www.fidelitydesign.net
+
+Based on Andrew Nurse's blog post entitled "Using the Razor parser outside of ASP.Net" 
+(http://blog.andrewnurse.net/2010/07/22/UsingTheRazorParserOutsideOfASPNet.aspx)
