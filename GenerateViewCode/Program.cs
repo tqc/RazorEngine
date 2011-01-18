@@ -13,25 +13,45 @@ namespace GenerateViewCode
     {
         static void Main(string[] args)
         {
-
-            string template =
-                 File.ReadAllText(@"views\shared\DocView.cshtml");
-            Razor.SetTemplateBaseType(typeof(TemplateBase<>));
-
-            string baseTypeName = null;
-            if (template.StartsWith("@model"))
+            // for each .cshtml file under the working directory, generate a .cs file if it has changed.
+            foreach (var templatepath in Directory.EnumerateFiles(Environment.CurrentDirectory, "*.cshtml", SearchOption.AllDirectories))
             {
-                var l1 = template.IndexOf("\n");
-                var modelTypeName = template.Substring(6, l1-6).Trim();
-                template = template.Substring(l1).Trim();
-                baseTypeName = "RazorEngine.Templating.TemplateBase<" + modelTypeName + ">";
+                FileInfo fitemplate = new FileInfo(templatepath);
+                FileInfo ficode = new FileInfo(templatepath + ".cs");
+                if (!ficode.Exists || ficode.LastWriteTimeUtc < fitemplate.LastWriteTimeUtc)
+                {
+                    // get classname from path
+                    var cn = fitemplate.Name.Substring(0, fitemplate.Name.IndexOf('.'));
+                    var pt = fitemplate.DirectoryName.Split(new char[] {Path.DirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
+                    var ns = pt[pt.Length - 1];
+                    for (var i = pt.Length - 2; i > 0; i--)
+                    {
+                        ns = pt[i]+"."+ns;
+                        if (pt[i + 1] == "Views") break;
+                    }
 
+                    
+
+                    string template =
+                         File.ReadAllText(fitemplate.FullName);
+                    Razor.SetTemplateBaseType(typeof(TemplateBase<>));
+
+                    string baseTypeName = null;
+                    if (template.StartsWith("@model"))
+                    {
+                        var l1 = template.IndexOf("\n");
+                        var modelTypeName = template.Substring(6, l1 - 6).Trim();
+                        template = template.Substring(l1).Trim();
+                        baseTypeName = "RazorEngine.Templating.TemplateBase<" + modelTypeName + ">";
+
+                    }
+
+                    string result = Razor.ParseToCode(template, null, cn, baseTypeName, ns);
+
+                    File.WriteAllText(ficode.FullName, result);
+
+                }
             }
-
-            string result = Razor.ParseToCode(template, null, "DocView", baseTypeName);
-
-            File.WriteAllText(@"views\shared\DocView.cshtml.cs", result);
-
         }
     }
 

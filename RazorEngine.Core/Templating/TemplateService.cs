@@ -149,10 +149,11 @@
         /// <param name="name">[Optional] The name of the template.</param>
         /// <param name="baseTypeName">[Optional] Base type for the template. To be used if the model type is
         /// in an unreferenced assembly.</param>
+        /// <param name="outputNamespace">[Optional] Namespace for the generated class. Default is RazorEngine.Dynamic</param>
         /// <returns>The parsed template in code form.</returns>
-        public string ParseToCode(string template, Type modelType = null, string name = null, string baseTypeName = null)
+        public string ParseToCode(string template, Type modelType = null, string name = null, string baseTypeName = null, string outputNamespace = null)
         {
-            return compiler.GetCode(name, template, modelType, baseTypeName);
+            return compiler.GetCode(name, template, modelType, baseTypeName, outputNamespace);
         }
 
 

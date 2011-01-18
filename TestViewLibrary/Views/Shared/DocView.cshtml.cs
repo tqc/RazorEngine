@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RazorEngine.Dynamic {
+namespace TestViewLibrary.Views.Shared {
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -24,7 +24,7 @@ namespace RazorEngine.Dynamic {
         
         public override void Execute() {
             this.Clear();
-WriteLiteral("<div>\r\n\r\n");
+WriteLiteral("<div>\r\nTesting\r\n");
 
 
      foreach (var s1 in Model.SubSections)

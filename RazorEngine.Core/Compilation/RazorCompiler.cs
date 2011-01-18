@@ -135,7 +135,7 @@
         /// <param name="baseTypeName">[Optional] Base type for the template. To be used if the model type is
         /// in an unreferenced assembly.</param>
         /// <returns>The results of compilation.</returns>
-        public string GetCode(string className, string template, Type modelType = null, string baseTypeName = null)
+        public string GetCode(string className, string template, Type modelType = null, string baseTypeName = null, string outputNamespace = null)
         {
             if (className == null)
             {
@@ -146,7 +146,7 @@
             var host = new RazorEngineHost(service);
             host.GeneratedClassContext = new GeneratedClassContext("Execute", "Write", "WriteLiteral", "WriteTo", "WriteLiteralTo", "RazorEngine.Templating.TemplateWriter");
 
-            var generator = service.CreateCodeGenerator(className, "RazorEngine.Dynamic", null, host);
+            var generator = service.CreateCodeGenerator(className, outputNamespace ?? "RazorEngine.Dynamic", null, host);
             var codeParser = service.CreateCodeParser();
 
             var parser = new RazorParser(codeParser, markupParser);
@@ -203,6 +203,7 @@
         /// </summary>
         /// <param name="template">The string template to create a <see cref="ITemplate"/> for.</param>
         /// <param name="modelType">[Optional] The model type.</param>
+        /// <param name="outputNamespace">[Optional] Namespace for the generated class. Default is RazorEngine.Dynamic</param>
         /// <returns>An instance of <see cref="ITemplate"/>.</returns>
         public ITemplate CreateTemplate(string template, Type modelType = null)
         {
