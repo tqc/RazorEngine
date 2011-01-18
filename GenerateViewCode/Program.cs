@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using RazorEngine;
 using RazorEngine.Templating;
+using System.Reflection;
 
 namespace GenerateViewCode
 {
@@ -16,10 +17,20 @@ namespace GenerateViewCode
             string template =
                  File.ReadAllText(@"views\shared\DocView.cshtml");
             Razor.SetTemplateBaseType(typeof(TemplateBase<>));
-            string result = Razor.ParseToCs(template, typeof(TW.PDF.DocSection), "DocView");
+            
+
+            string result = Razor.ParseToCode(template, typeof(TestViewLibrary.Model.DocSection), "DocView");
 
             File.WriteAllText(@"views\shared\DocView.cshtml.cs", result);
 
         }
     }
+
+    
 }
+
+namespace TestViewLibrary.Model
+{
+    class DocSection { }
+}
+

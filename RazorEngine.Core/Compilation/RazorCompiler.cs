@@ -127,14 +127,18 @@
         }
 
         /// <summary>
-        /// Compiles the string template into a <see cref="ITemplate"/>.
+        /// Compiles the string cshtml template into a cs string
         /// </summary>
         /// <param name="className">The name of the compiled class.</param>
         /// <param name="template">The template to compile.</param>
         /// <param name="modelType">[Optional] The model type.</param>
         /// <returns>The results of compilation.</returns>
-        public CompilerResults CompileTemplate(string className, string template, Type modelType = null)
+        public string GetCode(string className, string template, Type modelType = null)
         {
+            if (className == null)
+            {
+                className = Regex.Replace(Guid.NewGuid().ToString("N"), @"[^A-Za-z]*", "");
+            }
             var service = languageProvider.CreateLanguageService();
             var codeDom = languageProvider.CreateCodeDomProvider();
             var host = new RazorEngineHost(service);
@@ -160,6 +164,23 @@
             var builder = new StringBuilder();
             GenerateCode(codeDom, generator, builder);
 
+            return builder.ToString();
+        }
+
+
+
+        /// <summary>
+        /// Compiles the string template into a <see cref="ITemplate"/>.
+        /// </summary>
+        /// <param name="className">The name of the compiled class.</param>
+        /// <param name="template">The template to compile.</param>
+        /// <param name="modelType">[Optional] The model type.</param>
+        /// <returns>The results of compilation.</returns>
+        public CompilerResults CompileTemplate(string className, string template, Type modelType = null)
+        {
+            var code = GetCode(className, template, modelType);
+
+            var codeDom = languageProvider.CreateCodeDomProvider();
             var parameters = new CompilerParameters();
             AddReferences(parameters);
 
@@ -168,7 +189,7 @@
             parameters.IncludeDebugInformation = false;
             parameters.CompilerOptions = "/target:library /optimize";
 
-            return codeDom.CompileAssemblyFromSource(parameters, new[] { builder.ToString() });
+            return codeDom.CompileAssemblyFromSource(parameters, new[] { code });
         }
 
         /// <summary>

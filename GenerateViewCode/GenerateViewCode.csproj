@@ -56,10 +56,6 @@
       <Project>{627E40EE-0A5E-4787-B92F-57B74A683E2D}</Project>
       <Name>RazorEngine.Templates</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestViewLibrary\TestViewLibrary.csproj">
-      <Project>{ADBDBA8E-60B0-430D-9F16-212DE45DF030}</Project>
-      <Name>TestViewLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

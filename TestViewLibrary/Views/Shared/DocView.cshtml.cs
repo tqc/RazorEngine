@@ -9,9 +9,12 @@
 //------------------------------------------------------------------------------
 
 namespace RazorEngine.Dynamic {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     
     
-    public class DocView : RazorEngine.Templating.TemplateBase<TW.PDF.DocSection> {
+    public class DocView : RazorEngine.Templating.TemplateBase<TestViewLibrary.Model.DocSection> {
         
 #line hidden
 
@@ -22,19 +25,7 @@ namespace RazorEngine.Dynamic {
         public override void Execute() {
             this.Clear();
 
-Write(model);
-
-WriteLiteral(" TW.PDF.DocSection\r\n<div>\r\n    <h1>");
-
-
-   Write(Model.Title);
-
-WriteLiteral("</h1>\r\n    <div>");
-
-
-    Write(Model.Content);
-
-WriteLiteral("</div>\r\n");
+WriteLiteral(" TestViewLibrary.DocSection\r\n<div>\r\n\r\n");
 
 
      foreach (var s1 in Model.SubSections)

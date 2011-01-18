@@ -151,6 +151,20 @@
         }
 
         /// <summary>
+        /// Convert a cshtml template to cs code
+        /// </summary>
+        /// <param name="template">The template to parse.</param>
+        /// <param name="model">[Optional] Type of the model for the template.</param>
+        /// <param name="name">[Optional] The name of the template.</param>
+        /// <returns>The parsed template in code form.</returns>
+        public static string ParseToCode(string template, Type modelType = null, string name = null)
+        {
+            EnsureTemplateService();
+            return service.ParseToCode(template, modelType, name);
+        }
+
+
+        /// <summary>
         /// Runs the cached template with the specified name.
         /// </summary>
         /// <param name="name">The name of the cached template.</param>
