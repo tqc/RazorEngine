@@ -132,8 +132,10 @@
         /// <param name="className">The name of the compiled class.</param>
         /// <param name="template">The template to compile.</param>
         /// <param name="modelType">[Optional] The model type.</param>
+        /// <param name="baseTypeName">[Optional] Base type for the template. To be used if the model type is
+        /// in an unreferenced assembly.</param>
         /// <returns>The results of compilation.</returns>
-        public string GetCode(string className, string template, Type modelType = null)
+        public string GetCode(string className, string template, Type modelType = null, string baseTypeName = null)
         {
             if (className == null)
             {
@@ -150,8 +152,12 @@
             var parser = new RazorParser(codeParser, markupParser);
 
             AddNamespaceImports(generator.GeneratedNamespace);
+            string baseType = baseTypeName;
+            if (baseTypeName == null)
+            {
+                baseType = GetBaseTypeDeclaration(languageProvider, modelType, templateBaseType);
+            }
 
-            string baseType = GetBaseTypeDeclaration(languageProvider, modelType, templateBaseType);
             generator.GeneratedClass.BaseTypes.Add(baseType);
 
             if ((modelType != null) && IsAnonymousType(modelType))

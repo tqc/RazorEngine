@@ -17,9 +17,18 @@ namespace GenerateViewCode
             string template =
                  File.ReadAllText(@"views\shared\DocView.cshtml");
             Razor.SetTemplateBaseType(typeof(TemplateBase<>));
-            
 
-            string result = Razor.ParseToCode(template, typeof(TestViewLibrary.Model.DocSection), "DocView");
+            string baseTypeName = null;
+            if (template.StartsWith("@model"))
+            {
+                var l1 = template.IndexOf("\n");
+                var modelTypeName = template.Substring(6, l1-6).Trim();
+                template = template.Substring(l1).Trim();
+                baseTypeName = "RazorEngine.Templating.TemplateBase<" + modelTypeName + ">";
+
+            }
+
+            string result = Razor.ParseToCode(template, null, "DocView", baseTypeName);
 
             File.WriteAllText(@"views\shared\DocView.cshtml.cs", result);
 
@@ -29,8 +38,4 @@ namespace GenerateViewCode
     
 }
 
-namespace TestViewLibrary.Model
-{
-    class DocSection { }
-}
 

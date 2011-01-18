@@ -147,10 +147,12 @@
         /// <param name="template">The template to parse.</param>
         /// <param name="model">[Optional] Type of the model for the template.</param>
         /// <param name="name">[Optional] The name of the template.</param>
+        /// <param name="baseTypeName">[Optional] Base type for the template. To be used if the model type is
+        /// in an unreferenced assembly.</param>
         /// <returns>The parsed template in code form.</returns>
-        public string ParseToCode(string template, Type modelType = null, string name = null)
+        public string ParseToCode(string template, Type modelType = null, string name = null, string baseTypeName = null)
         {
-            return compiler.GetCode(name, template, modelType);
+            return compiler.GetCode(name, template, modelType, baseTypeName);
         }
 
 

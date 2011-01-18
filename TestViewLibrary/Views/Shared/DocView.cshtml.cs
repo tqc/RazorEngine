@@ -24,8 +24,7 @@ namespace RazorEngine.Dynamic {
         
         public override void Execute() {
             this.Clear();
-
-WriteLiteral(" TestViewLibrary.DocSection\r\n<div>\r\n\r\n");
+WriteLiteral("<div>\r\n\r\n");
 
 
      foreach (var s1 in Model.SubSections)
@@ -81,7 +80,7 @@ WriteLiteral("</div>\r\n");
         }
     }
 
-WriteLiteral("\r\n</div>\r\n");
+WriteLiteral("\r\n</div>");
 
 
         }
