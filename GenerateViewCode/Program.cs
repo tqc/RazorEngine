@@ -13,6 +13,12 @@ namespace GenerateViewCode
     {
         static void Main(string[] args)
         {
+            string templatebasename = "RazorEngine.Templating.TemplateBase";
+            if (args.Length > 0)
+            {
+                templatebasename = args[0];
+            }
+            var filecount = 0;
             // for each .cshtml file under the working directory, generate a .cs file if it has changed.
             foreach (var templatepath in Directory.EnumerateFiles(Environment.CurrentDirectory, "*.cshtml", SearchOption.AllDirectories))
             {
@@ -36,22 +42,23 @@ namespace GenerateViewCode
                          File.ReadAllText(fitemplate.FullName);
                     Razor.SetTemplateBaseType(typeof(TemplateBase<>));
 
-                    string baseTypeName = null;
+                    string baseTypeName = templatebasename;
                     if (template.StartsWith("@model"))
                     {
                         var l1 = template.IndexOf("\n");
                         var modelTypeName = template.Substring(6, l1 - 6).Trim();
                         template = template.Substring(l1).Trim();
-                        baseTypeName = "RazorEngine.Templating.TemplateBase<" + modelTypeName + ">";
-
+                        baseTypeName = templatebasename+"<" + modelTypeName + ">";
                     }
 
                     string result = Razor.ParseToCode(template, null, cn, baseTypeName, ns);
 
                     File.WriteAllText(ficode.FullName, result);
-
+                    Console.WriteLine("Updated {0}.{1}", ns, cn);
+                    filecount++;
                 }
             }
+            Console.WriteLine("Done - updated {0} files", filecount);
         }
     }
 

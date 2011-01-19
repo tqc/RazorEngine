@@ -234,8 +234,9 @@
         /// <param name="builder">The string builder used to write the code.</param>
         private static void GenerateCode(CodeDomProvider codeDom, RazorCodeGenerator codeGenerator, StringBuilder builder)
         {
-            var statement = new CodeMethodInvokeExpression(new CodeThisReferenceExpression(), "Clear");
-            codeGenerator.GeneratedExecuteMethod.Statements.Insert(0, new CodeExpressionStatement(statement));
+            // removed so the output is compatible with standard WebViewPage
+            //            var statement = new CodeMethodInvokeExpression(new CodeThisReferenceExpression(), "Clear");
+            //            codeGenerator.GeneratedExecuteMethod.Statements.Insert(0, new CodeExpressionStatement(statement));
 
             using (var writer = new StringWriter(builder))
             {
