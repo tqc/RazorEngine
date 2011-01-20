@@ -50,6 +50,10 @@ namespace GenerateViewCode
                         template = template.Substring(l1).Trim();
                         baseTypeName = templatebasename+"<" + modelTypeName + ">";
                     }
+                    else if (cn == "_ViewStart")
+                    {
+                        baseTypeName = "System.Web.WebPages.StartPage";
+                    }
 
                     string result = Razor.ParseToCode(template, null, cn, baseTypeName, ns);
 
