@@ -51,7 +51,7 @@ namespace GenerateViewCodeWithMvc
                     //Razor.SetTemplateBaseType(typeof(TemplateBase<>));
 
                     string baseTypeName = templatebasename;
-                  
+
                     if (template.StartsWith("@model"))
                     {
                         var l1 = template.IndexOf("\n");
@@ -59,14 +59,22 @@ namespace GenerateViewCodeWithMvc
                         template = template.Substring(l1).Trim();
                         baseTypeName = templatebasename + "<" + modelTypeName + ">";
                     }
-                    else if (cn == "_ViewStart")
+                    //else if (cn == "_ViewStart")
+                    //{
+                    //    baseTypeName = "System.Web.WebPages.StartPage";
+                    //}
+                    else
                     {
-                        baseTypeName = "System.Web.WebPages.StartPage";
+                        baseTypeName = templatebasename + "<dynamic>";
                     }
+
+                    host.DefaultPageBaseClass = baseTypeName;
                     
-                    //string result = 
+
+                        //string result = 
                         //Razor.ParseToCode(template, null, cn, baseTypeName, ns);
 
+                    
                     GeneratorResults results = null;
                     using (var reader = new StringReader(template))
                     {
