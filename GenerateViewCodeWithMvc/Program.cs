@@ -78,9 +78,13 @@ namespace GenerateViewCodeWithMvc
                     GeneratorResults results = null;
                     using (var reader = new StringReader(template))
                     {
-                        results = rte.GenerateCode(reader, cn, ns, null);
+                        results = rte.GenerateCode(reader, cn, ns, null);                        
                     }
                     StringBuilder builder = new StringBuilder();
+                    builder.AppendLine("using System.Web.Mvc;");
+                    builder.AppendLine("using System.Web.Mvc.Html;");
+                    
+
                                 using (var writer = new StringWriter(builder))
             {
                 new CSharpCodeProvider().GenerateCodeFromCompileUnit(results.GeneratedCode, writer, null);
