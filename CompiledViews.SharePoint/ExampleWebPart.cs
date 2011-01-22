@@ -9,8 +9,7 @@ namespace CompiledViews.SharePoint
 {
     public class ExampleWebPart : MvcWebPart
     {
-
-        protected override MvcWebPart.ActionResult Get()
+        protected override ActionResult Get()
         {
             var m = new DocSection()
             {
@@ -18,6 +17,6 @@ namespace CompiledViews.SharePoint
             };
             return View(new DocView(), m);
         }
-
     }
+
 }

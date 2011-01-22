@@ -70,8 +70,6 @@ namespace CompiledViews.SharePoint
                 try
                 {
                     base.CreateChildControls();
-
-                    // TODO: handle post/other actions also
                     var r = Get();
                     r.Execute();
                 }
