@@ -89,7 +89,7 @@ namespace GenerateViewCodeWithMvc
             {
                 new CSharpCodeProvider().GenerateCodeFromCompileUnit(results.GeneratedCode, writer, null);
             }
-
+                                builder.Replace("#line hidden", "#line 1 \"" + fitemplate.Name+"\"");
                     File.WriteAllText(ficode.FullName, builder.ToString());
                     Console.WriteLine("Updated {0}.{1}", ns, cn);
                     filecount++;
