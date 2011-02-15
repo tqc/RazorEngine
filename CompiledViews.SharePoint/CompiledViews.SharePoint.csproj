@@ -30,6 +30,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CompiledViews.SharePoint.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,10 +59,7 @@
     <Compile Include="ViewResult.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RazorEngine.Run\RazorEngine.Run.csproj">
-      <Project>{32517381-AC00-4D40-820A-D59B7F0A7985}</Project>
-      <Name>RazorEngine.Run</Name>
-    </ProjectReference>
+    <None Include="CompiledViews.SharePoint.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
