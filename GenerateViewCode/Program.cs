@@ -13,12 +13,16 @@ namespace GenerateViewCode
     {
         static void Main(string[] args)
         {
-            string templatebasename = "RazorEngine.Templating.TemplateBase";
+
+            string templatebasename = "CompiledViews.TemplateBase";
             if (args.Length > 0)
             {
                 templatebasename = args[0];
             }
             var filecount = 0;
+
+            Console.WriteLine("Generating .cshtml.cs classes based on {0}", templatebasename);
+
             // for each .cshtml file under the working directory, generate a .cs file if it has changed.
             foreach (var templatepath in Directory.EnumerateFiles(Environment.CurrentDirectory, "*.cshtml", SearchOption.AllDirectories))
             {
@@ -63,6 +67,10 @@ namespace GenerateViewCode
                         File.WriteAllText(ficode.FullName, result);
                         Console.WriteLine("Updated {0}.{1}", ns, cn);
                         filecount++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Skipping unchanged view {0}", fitemplate.Name);
                     }
                 }
                 catch (Exception ex)

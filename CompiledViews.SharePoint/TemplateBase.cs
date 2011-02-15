@@ -1,4 +1,4 @@
-﻿namespace RazorEngine.Templating
+﻿namespace CompiledViews
 {
     using System.IO;
     using System.Text;
@@ -10,7 +10,6 @@
     public abstract class TemplateBase
     {
         public Dictionary<string, string> ViewData { get; set; }
-
         
         #region Constructor
         /// <summary>

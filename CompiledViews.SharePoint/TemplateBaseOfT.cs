@@ -1,8 +1,9 @@
-﻿namespace RazorEngine.Templating
+﻿namespace CompiledViews
 {
     using System;
      using System.Linq;
     using System.Reflection;
+    using RazorEngine.Templating;
 
 
 
