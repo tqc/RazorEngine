@@ -17,11 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{8398A9
 		RazorEngine.snk = RazorEngine.snk
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{DBC8E330-7D6E-4840-8C92-C6BBDF037AC3}"
-	ProjectSection(SolutionItems) = preProject
-		razorengine.nuspec = razorengine.nuspec
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateViewCode", "GenerateViewCode\GenerateViewCode.csproj", "{3ECFD7D5-D7AF-4756-A3F6-057FF7838FB7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine.Run", "RazorEngine.Run\RazorEngine.Run.csproj", "{32517381-AC00-4D40-820A-D59B7F0A7985}"
