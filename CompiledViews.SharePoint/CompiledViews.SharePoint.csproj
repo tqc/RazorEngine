@@ -40,18 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExampleWebPart.cs" />
+    <Compile Include="ActionResult.cs" />
     <Compile Include="MvcWebPart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templating\ITemplate.cs" />
+    <Compile Include="Templating\ITemplateOfT.cs" />
+    <Compile Include="Templating\TemplateBase.cs" />
+    <Compile Include="Templating\TemplateBaseOfT.cs" />
+    <Compile Include="Templating\TemplateException.cs" />
+    <Compile Include="Templating\TemplateWriter.cs" />
+    <Compile Include="TextResult.cs" />
+    <Compile Include="ViewResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RazorEngine.Run\RazorEngine.Run.csproj">
       <Project>{32517381-AC00-4D40-820A-D59B7F0A7985}</Project>
       <Name>RazorEngine.Run</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TestViewLibrary\TestViewLibrary.csproj">
-      <Project>{ADBDBA8E-60B0-430D-9F16-212DE45DF030}</Project>
-      <Name>TestViewLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
