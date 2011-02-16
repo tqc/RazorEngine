@@ -74,6 +74,28 @@ namespace CompiledViews.SharePoint
             return new TextResult(this, message, 200);
         }
 
+        /// <summary>
+        /// Get a Json result with a specific http status code
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="statuscode"></param>
+        /// <returns></returns>
+        protected JsonResult Json(string message, int statuscode)
+        {
+            return new JsonResult(this, message, statuscode);
+        }
+
+        /// <summary>
+        /// Get a Json result with http status OK
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        protected JsonResult Json(string message)
+        {
+            return new JsonResult(this, message, 200);
+        }
+
+
 
         /// <summary>
         /// This method is called on a get request
