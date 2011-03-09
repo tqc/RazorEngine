@@ -16,9 +16,9 @@ namespace CompiledViews.SharePoint
     {
         private TemplateBase<T> View;
         private T Model;
-        private Control ParentControl;
+        private MvcWebPart ParentControl;
 
-        public ViewResult(Control parent, TemplateBase<T> view, T model)
+        public ViewResult(MvcWebPart parent, TemplateBase<T> view, T model)
         {
             ParentControl = parent;
             View = view;
@@ -29,7 +29,7 @@ namespace CompiledViews.SharePoint
         {
             View.Model = Model;
             View.Execute();
-            ParentControl.Controls.Add(new LiteralControl(View.Result));
+            ParentControl.ViewContent.Text=View.Result;
         }
     }
 }

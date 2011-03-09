@@ -115,6 +115,14 @@ namespace CompiledViews.SharePoint
         }
 
 
+        public void Page_Load()
+        {
+
+
+        }
+
+        internal LiteralControl ViewContent;
+
         protected override void CreateChildControls()
         {
             if (!_error)
@@ -122,8 +130,8 @@ namespace CompiledViews.SharePoint
                 try
                 {
                     base.CreateChildControls();
-                    var r = Page.Request.HttpMethod == "POST" ? Post() : Get();
-                    r.Execute();
+                    ViewContent = new LiteralControl();
+                    Controls.Add(ViewContent);
                 }
                 catch (Exception ex)
                 {
@@ -141,7 +149,8 @@ namespace CompiledViews.SharePoint
                     base.OnLoad(e);
                     this.EnsureChildControls();
 
-                    // Your code here...
+                    var r = Page.Request.HttpMethod == "POST" ? Post() : Get();
+                    r.Execute();
 
                 }
                 catch (Exception ex)
