@@ -34,6 +34,19 @@ namespace CompiledViews.SharePoint
         public bool UseSimpleRendering { get; set; }
 
 
+
+        /// <summary>
+        /// If set, the web part will render asynchronously. The value must be unique on the page
+        /// </summary>
+        [Personalizable(PersonalizationScope.Shared)]
+        [WebBrowsable(true)]
+        [System.ComponentModel.Category("My Property Group")]
+        [WebDisplayName("AsyncToken")]
+        [WebDescription("If set, the web part will render asynchronously. The value must be unique on the page")]
+        public string AsyncToken { get; set; }
+
+
+
         protected MvcWebPart()
         {
             this.ExportMode = WebPartExportMode.All;
@@ -48,9 +61,20 @@ namespace CompiledViews.SharePoint
         /// <param name="view">Instance of the compiled view class</param>
         /// <param name="model">Model object</param>
         /// <returns></returns>
-        protected ViewResult<T> View<T>(TemplateBase<T> view, T model)
+        protected ActionResult View<T>(TemplateBase<T> view, T model)
         {
-            return new ViewResult<T>(this, view, model);
+
+            if (!string.IsNullOrEmpty(AsyncToken)
+                && Page.Request.HttpMethod == "GET"
+                && Page.Request.QueryString["AsyncWebPart"] == AsyncToken)
+            {
+                // rendering on async callback
+                return new PartialViewResult<T>(this, view, model);
+            }
+            else
+            {
+                return new ViewResult<T>(this, view, model);
+            }
         }
 
         /// <summary>
@@ -140,6 +164,24 @@ namespace CompiledViews.SharePoint
             }
         }
 
+
+        private string RenderAsyncLoader()
+        {
+            var s = "<div id=\"AsyncLoader" + AsyncToken + "\"></div>";
+            s += "<script type='text/javascript'>"
+
+                + "function LoadAsyncWebPart(asynctoken) {"
+        + "$.get('?AsyncWebPart='+asynctoken, function(data) {"
+  + "$('#AsyncLoader'+asynctoken).html(data);"
++ "});"
+        + "} "
+
+                + "$(function() {LoadAsyncWebPart('" + AsyncToken + "')});"
+            + "</script>";
+
+            return s;
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             if (!_error)
@@ -149,8 +191,32 @@ namespace CompiledViews.SharePoint
                     base.OnLoad(e);
                     this.EnsureChildControls();
 
-                    var r = Page.Request.HttpMethod == "POST" ? Post() : Get();
-                    r.Execute();
+                    if (!string.IsNullOrEmpty(AsyncToken) && Page.Request.HttpMethod == "GET")
+                    {
+                        if (string.IsNullOrEmpty(Page.Request.QueryString["AsyncWebPart"]))
+                        {
+                            // rendering full page - render async stub to ViewContent
+                            ViewContent.Text = RenderAsyncLoader();
+                        }
+                        else if (Page.Request.QueryString["AsyncWebPart"] == AsyncToken)
+                        {
+                            // this is async rendering - partial response only
+                            // call get as normal - View() will use PartialViewResult instead of ViewResult
+                            Get().Execute();
+                        }
+                        else
+                        {
+                            // async rendering of other web part - do nothing
+                        }
+
+                    }
+                    else
+                    {
+                        var r = Page.Request.HttpMethod == "POST" ? Post() : Get();
+                        r.Execute();
+
+                    }
+
 
                 }
                 catch (Exception ex)
@@ -190,8 +256,8 @@ namespace CompiledViews.SharePoint
 
     }
 
-  
-  
+
+
 
 }
 
