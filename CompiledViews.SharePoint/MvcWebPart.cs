@@ -61,7 +61,7 @@ namespace CompiledViews.SharePoint
         /// <param name="view">Instance of the compiled view class</param>
         /// <param name="model">Model object</param>
         /// <returns></returns>
-        protected ActionResult View<T>(TemplateBase<T> view, T model)
+        protected ViewResult<T> View<T>(TemplateBase<T> view, T model)
         {
 
             if (!string.IsNullOrEmpty(AsyncToken)

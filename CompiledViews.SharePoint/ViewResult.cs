@@ -18,6 +18,9 @@ namespace CompiledViews.SharePoint
         private T Model;
         private MvcWebPart ParentControl;
 
+        protected ViewResult() { }
+
+
         public ViewResult(MvcWebPart parent, TemplateBase<T> view, T model)
         {
             ParentControl = parent;

@@ -12,7 +12,7 @@ namespace CompiledViews.SharePoint
     /// Renders a compiled Razor view and adds it to the parent as the content of a LiteralControl
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PartialViewResult<T> : ActionResult
+    public class PartialViewResult<T> : ViewResult<T>
     {
         private TemplateBase<T> View;
         private T Model;
