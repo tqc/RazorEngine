@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Shared\DocView.cshtml" />
+    <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RazorEngine.Run\RazorEngine.Run.csproj">

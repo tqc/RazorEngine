@@ -12,6 +12,21 @@
     <AssemblyName>CompiledViews.SharePoint</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +45,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>CompiledViews.SharePoint.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -40,21 +61,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExampleWebPart.cs" />
+    <Compile Include="ActionResult.cs" />
+    <Compile Include="PartialViewResult.cs" />
+    <Compile Include="HtmlResult.cs" />
+    <Compile Include="JsonResult.cs" />
     <Compile Include="MvcWebPart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templating\ITemplate.cs" />
+    <Compile Include="Templating\ITemplateOfT.cs" />
+    <Compile Include="TemplateBase.cs" />
+    <Compile Include="TemplateBaseOfT.cs" />
+    <Compile Include="Templating\TemplateException.cs" />
+    <Compile Include="Templating\TemplateWriter.cs" />
+    <Compile Include="TextResult.cs" />
+    <Compile Include="ViewResult.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RazorEngine.Run\RazorEngine.Run.csproj">
-      <Project>{32517381-AC00-4D40-820A-D59B7F0A7985}</Project>
-      <Name>RazorEngine.Run</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TestViewLibrary\TestViewLibrary.csproj">
-      <Project>{ADBDBA8E-60B0-430D-9F16-212DE45DF030}</Project>
-      <Name>TestViewLibrary</Name>
-    </ProjectReference>
+    <None Include="CompiledViews.SharePoint.snk" />
+    <None Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_BuildVersioningStyle="None.None.DeltaBaseYearDayOfYear.TimeStamp" BuildVersion_UpdateFileVersion="True" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

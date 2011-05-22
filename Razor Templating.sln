@@ -17,11 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{8398A9
 		RazorEngine.snk = RazorEngine.snk
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{DBC8E330-7D6E-4840-8C92-C6BBDF037AC3}"
-	ProjectSection(SolutionItems) = preProject
-		razorengine.nuspec = razorengine.nuspec
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateViewCode", "GenerateViewCode\GenerateViewCode.csproj", "{3ECFD7D5-D7AF-4756-A3F6-057FF7838FB7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorEngine.Run", "RazorEngine.Run\RazorEngine.Run.csproj", "{32517381-AC00-4D40-820A-D59B7F0A7985}"
@@ -36,11 +31,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompiledViews.SharePoint", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompiledViews.Mvc3Test", "CompiledViews.Mvc3Test\CompiledViews.Mvc3Test.csproj", "{A406C80E-FE44-4EB7-AEF3-CBCF15B02B46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewCodeSingleFileGenerator", "ViewCodeFileGenerator\ViewCodeSingleFileGenerator.csproj", "{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}"
+EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -140,8 +133,25 @@ Global
 		{A406C80E-FE44-4EB7-AEF3-CBCF15B02B46}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A406C80E-FE44-4EB7-AEF3-CBCF15B02B46}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A406C80E-FE44-4EB7-AEF3-CBCF15B02B46}.Release|x86.ActiveCfg = Release|Any CPU
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Debug|x86.ActiveCfg = Debug|x86
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Debug|x86.Build.0 = Debug|x86
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Release|Any CPU.ActiveCfg = Release|x86
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Release|Mixed Platforms.Build.0 = Release|x86
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Release|x86.ActiveCfg = Release|x86
+		{C63476C7-2B33-4AD5-8896-A0BA86F16FC5}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		BuildVersion_AssemblyInfoFilename = CompiledViews.SharePoint\Properties\AssemblyInfo.cs
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
