@@ -14,10 +14,16 @@ namespace GenerateViewCodeWithMvc
         static void Main(string[] args)
         {
             string templatebasename = "RazorEngine.Templating.TemplateBase";
+            var namespaces = new List<string>();
             if (args.Length > 0)
             {
                 templatebasename = args[0];
             }
+            for (int i = 1; i < args.Length; i++ )
+            {
+                namespaces.Add(args[i]);
+            }
+
             var filecount = 0;
 
             // for each .cshtml file under the working directory, generate a .cs file if it has changed.
@@ -85,8 +91,16 @@ namespace GenerateViewCodeWithMvc
                         results = rte.GenerateCode(reader, cn, ns, null);
                     }
                     StringBuilder builder = new StringBuilder();
-                    //builder.AppendLine("using System.Web.Mvc;");
-                    //builder.AppendLine("using System.Web.Mvc.Html;");
+
+                    builder.AppendLine("using System.Web.Mvc;");
+                    builder.AppendLine("using System.Web.Mvc.Html;");
+                    builder.AppendLine("using System.Web.Mvc.Ajax;");
+
+                    foreach (var v in namespaces)
+                    {
+                        builder.AppendLine("using "+v+";");
+                    }
+
 
 
                     using (var writer = new StringWriter(builder))
