@@ -26,7 +26,7 @@ namespace CompiledViews.SharePoint
         {
             var resp = ParentControl.Page.Response;
             resp.Clear();
-            resp.ContentType = "text/json";
+            resp.ContentType = "application/json";
             resp.StatusCode = StatusCode;
             resp.Write(Message);
             resp.End();
