@@ -78,6 +78,12 @@ namespace CompiledViews.SharePoint
             }
         }
 
+        protected ContentResult Content(string content)
+        {
+                return new ContentResult(this, content);
+        }
+
+
         /// <summary>
         /// Get a text result with a specific http status code
         /// </summary>
