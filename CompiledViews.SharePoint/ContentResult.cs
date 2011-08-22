@@ -22,6 +22,7 @@ namespace CompiledViews.SharePoint
         public ContentResult(MvcWebPart parent, string content)
         {
             ParentControl = parent;
+            Content = content;
         }
 
         public override void Execute()
