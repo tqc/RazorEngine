@@ -29,7 +29,7 @@ namespace CompiledViews.SharePoint
         /// </summary>
         [Personalizable(PersonalizationScope.Shared)]
         [WebBrowsable(true)]
-        [System.ComponentModel.Category("My Property Group")]
+        [System.ComponentModel.Category("MVC Web Part")]
         [WebDisplayName("Use Simple Rendering")]
         [WebDescription("If true, the web part chrome will not render. Intended for when the webpart is used as a control")]
         public bool UseSimpleRendering { get; set; }
@@ -41,7 +41,7 @@ namespace CompiledViews.SharePoint
         /// </summary>
         [Personalizable(PersonalizationScope.Shared)]
         [WebBrowsable(true)]
-        [System.ComponentModel.Category("My Property Group")]
+        [System.ComponentModel.Category("MVC Web Part")]
         [WebDisplayName("AsyncToken")]
         [WebDescription("If set, the web part will render asynchronously. The value must be unique on the page")]
         public string AsyncToken { get; set; }
