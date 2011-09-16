@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Text;
 using RazorEngine.Templating;
 using System.Diagnostics;
+using System.Reflection;
 
 
 
@@ -258,7 +259,7 @@ namespace CompiledViews.SharePoint
         {
             this._error = true;
             this.Controls.Clear();
-            this.Controls.Add(new LiteralControl(ex.Message));
+            this.Controls.Add(new LiteralControl(ex is TargetInvocationException ? ex.InnerException.Message : ex.Message));
 
             Trace.WriteLine(ex.Message + " " + ex.StackTrace);
             if (ex.InnerException != null) Trace.WriteLine("Inner Exception: "+ex.InnerException.Message + " " + ex.InnerException.StackTrace);
