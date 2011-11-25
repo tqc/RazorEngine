@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
+using System.Web;
 
 namespace CompiledViews.SharePoint
 {
@@ -24,7 +25,7 @@ namespace CompiledViews.SharePoint
 
         public override void Execute()
         {
-            var resp = ParentControl.Page.Response;
+            var resp = HttpContext.Current.Response;
             resp.Clear();
             resp.ContentType = "application/json";
             resp.StatusCode = StatusCode;
